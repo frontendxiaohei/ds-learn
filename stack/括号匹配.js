@@ -13,6 +13,29 @@
  * 示例 5:
  * 输入: "{[]}"
  * 输出: true
- *
+ * 
+ * 思路： 如果是（ { [ 就压栈
+ * 如果是）} ] 就出栈
+ * 
+ * 整个字符串遍历完，栈为空， 就是合法的
  */
 
+let isValid = function (s) {
+  let stack = [];
+  let map = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
+  for (let i = 0; i < s.length; i++) {
+    const ele = s[i];
+    if (ele in map) {
+      stack.push(ele);
+    } else {
+      if (ele !== map[stack.pop()]) {
+        return false;
+      }
+    }
+  }
+  return !stack.length;
+};
