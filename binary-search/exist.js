@@ -55,7 +55,7 @@ function test() {
             break;
         }
     }
-    console.log("succeed")
+    console.log(succeed ? "succeed" : "failed")
 
 }
 test()
